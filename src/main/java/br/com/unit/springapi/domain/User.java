@@ -1,6 +1,6 @@
 package br.com.unit.springapi.domain;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -11,8 +11,11 @@ import lombok.*;
 @ToString
 @Entity
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    @Column(unique = true)
     private String email;
     private String password;
 }
