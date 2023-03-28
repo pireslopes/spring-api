@@ -7,6 +7,7 @@ import br.com.unit.springapi.services.UserService;
 import br.com.unit.springapi.services.exceptions.DataIntegratyViolationException;
 import br.com.unit.springapi.services.exceptions.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,11 +19,12 @@ public class UserServiceImpl implements UserService {
 
     private final ModelMapper mapper;
 
-    private final UserRepository repository;
+    @Autowired
+    private UserRepository repository;
 
-    public UserServiceImpl(ModelMapper mapper, UserRepository repository) {
+
+    public UserServiceImpl(ModelMapper mapper) {
         this.mapper = mapper;
-        this.repository = repository;
     }
 
     @Override
