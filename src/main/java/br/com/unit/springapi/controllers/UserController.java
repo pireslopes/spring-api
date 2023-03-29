@@ -4,6 +4,7 @@ import br.com.unit.springapi.domain.User;
 import br.com.unit.springapi.domain.dto.UserDto;
 import br.com.unit.springapi.services.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -15,15 +16,13 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/user")
 public class UserController {
 
+    @Autowired
+    private ModelMapper mapper;
 
-    private final ModelMapper mapper;
+    @Autowired
+    private UserService service;
 
-    private final UserService service;
 
-    public UserController(ModelMapper mapper, UserService service) {
-        this.mapper = mapper;
-        this.service = service;
-    }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<UserDto> FindById(@PathVariable Integer id) {

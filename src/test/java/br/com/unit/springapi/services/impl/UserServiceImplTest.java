@@ -41,6 +41,10 @@ class UserServiceImplTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+        setInstanceMock();
+    }
+
+    private void setInstanceMock() {
         user = getUser();
         dto = new UserDto(getUser().getId(), getUser().getName(),getUser().getEmail(),getUser().getPassword());
         optional = Optional.of(getUser());
